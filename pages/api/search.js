@@ -1,3 +1,3 @@
-import { handler } from '../../api/users';
+import { handler } from '../../handler/search';
 
 export default handler;
