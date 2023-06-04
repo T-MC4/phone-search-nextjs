@@ -3,7 +3,6 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "preinstall": "apt-get update && apt-get install -y build-essential",
         "dev": "next dev",
         "build": "NODE_ENV=production AWS_LAMBDA_FUNCTION_NAME=true next build",
         "start": "next start",
@@ -25,5 +24,8 @@
     },
     "devDependencies": {
         "puppeteer": "^20.5.0"
+    },
+    "engines": {
+        "node": ">=18"
     }
 }
