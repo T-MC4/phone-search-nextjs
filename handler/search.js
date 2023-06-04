@@ -1,11 +1,11 @@
-import { getURLs } from '../../utils/metaphor.js';
+import { getURLs } from '../utils/metaphor.js';
 import {
     browseWebPage,
     findPhoneNumbersAndEmails,
     removeDuplicates,
-} from '../../utils/scraping.js';
+} from '../utils/scraping.js';
 
-export default async function handler(req, res) {
+export async function handler(req, res) {
     const start = performance.now();
 
     const query = req.query.query;
