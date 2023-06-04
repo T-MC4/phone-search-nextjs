@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "cheerio": "1.0.0-rc.12",
-        "chrome-aws-lambda": "^9.1.0",
+        "chrome-aws-lambda": "^10.1.0",
         "eslint": "^8.42.0",
         "eslint-config-next": "^13.4.4",
         "langchain": "^0.0.90",
