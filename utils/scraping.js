@@ -1,10 +1,19 @@
 import puppeteer from 'puppeteer';
 import * as cheerio from 'cheerio';
 import { searchPhoneNumbersInText } from 'libphonenumber-js';
+// import * as puppeteer from 'puppeteer';
+// import chromium from 'chrome-aws-lambda';
 
 export async function browseWebPage(url) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
+    // const browser = await chromium.puppeteer.launch({
+    //     args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    //     defaultViewport: chromium.defaultViewport,
+    //     executablePath: await chromium.executablePath,
+    //     headless: true,
+    //     ignoreHTTPSErrors: true,
+    //   })
     let content;
 
     try {
