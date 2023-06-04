@@ -5,7 +5,7 @@ import {
     removeDuplicates,
 } from '../../utils/scraping.js';
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
     const start = performance.now();
 
     const query = req.query.query;
