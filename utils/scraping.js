@@ -11,7 +11,7 @@ export async function browseWebPage(url) {
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
         // running on the Vercel platform.
         chrome = require('chrome-aws-lambda');
-        puppeteer = require('puppeteer');
+        puppeteer = require('puppeteer-core');
         options = {
             args: [
                 ...chrome.args,
