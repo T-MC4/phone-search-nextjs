@@ -1,6 +1,6 @@
 // Import the fetch function from node-fetch module
 import fetch from 'node-fetch';
-import fs from 'fs/promises';
+// import fs from 'fs/promises';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { PromptTemplate } from 'langchain/prompts';
 import { LLMChain } from 'langchain/chains';
@@ -88,7 +88,7 @@ export async function getURLs(request, breadth) {
                 const urls = data.results.map((result) => result.url);
                 console.log(urls);
 
-                await fs.writeFile('./utils/logs.json', JSON.stringify(urls));
+                // await fs.writeFile('./utils/logs.json', JSON.stringify(urls));
                 return {
                     urls,
                     metaphorSearchPrompt,
