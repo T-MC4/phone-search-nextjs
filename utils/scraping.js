@@ -20,7 +20,7 @@ export async function browseWebPage(url) {
             ],
             defaultViewport: chrome.defaultViewport,
             executablePath: await chrome.executablePath,
-            headless: true,
+            headless: 'new',
             ignoreHTTPSErrors: true,
         };
     } else {
