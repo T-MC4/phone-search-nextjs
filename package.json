@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "NODE_ENV=production AWS_LAMBDA_FUNCTION_NAME=true --trace-warnings next build",
+        "build": "NODE_ENV=production AWS_LAMBDA_FUNCTION_NAME=true NODE_OPTIONS=--trace-warnings next build",
         "start": "next start",
         "lint": "next lint",
         "search": "node -r dotenv/config utils/metaphor.js"
