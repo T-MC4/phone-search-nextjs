@@ -17,11 +17,14 @@ export async function browseWebPage(url) {
                 ...chrome.args,
                 '--hide-scrollbars',
                 '--disable-web-security',
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
             ],
             defaultViewport: chrome.defaultViewport,
             executablePath: await chrome.executablePath,
-            headless: 'new',
+            headless: true,
             ignoreHTTPSErrors: true,
+            ignoreDefaultArgs: ['--disable-extensions'],
         };
     } else {
         // running locally.
