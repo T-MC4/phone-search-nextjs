@@ -38,7 +38,7 @@ export async function browseWebPage(url) {
     let content;
 
     try {
-        await page.goto(url, { waitUntil: 'networkidle0', timeout: 20000 });
+        await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
         content = await page.content();
     } catch (error) {
         console.log(
