@@ -26,7 +26,7 @@ export async function browseWebPage(url) {
     } else {
         // running locally.
         puppeteer = require('puppeteer');
-        options = {};
+        options = { args: ['--no-sandbox'] };
     }
 
     // const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
