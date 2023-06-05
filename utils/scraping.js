@@ -33,7 +33,9 @@ export async function browseWebPage(url) {
     }
 
     // const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-    let browser = await puppeteer.launch(options);
+    // let browser = await puppeteer.launch(options);
+    const browser = await puppeteer.launch({ headless: 'new' });
+
     const page = await browser.newPage();
     let content;
 
