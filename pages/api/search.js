@@ -74,6 +74,13 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing query parameter' });
   }
 
+  const puppeteerOptions = {
+    headless: 'new',
+  };
+
+  const browser = await puppeteer.launch(puppeteerOptions);
+  const page = await browser.newPage();
+
 
     const arrayOfPromptResults = [
         {
