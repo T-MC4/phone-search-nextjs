@@ -56,6 +56,7 @@ Removed the .then() function after Promise.all(dataPromises) and directly assign
 Simplified the data flattening step by using the flat() method directly on results.
 */
 
+import puppeteer from 'puppeteer';
 import { getURLs } from '../../utils/metaphor.js';
 import {
   browseWebPage,
