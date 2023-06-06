@@ -8,8 +8,7 @@
         "start": "next start",
         "lint": "next lint",
         "search": "node -r dotenv/config utils/metaphor.js",
-        "install-puppeteer": "npm install puppeteer --unsafe-perm=true --allow-root",
-        "puppeteer": "^19.7.2"
+        "install-puppeteer": "npm install puppeteer --unsafe-perm=true --allow-root"
     },
     "dependencies": {
         "cheerio": "1.0.0-rc.12",
@@ -21,7 +20,8 @@
         "next": "^13.4.4",
         "puppeteer-core": "^10.1.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "puppeteer": "^19.7.2"
     },
     "devDependencies": {
         "puppeteer": "^19.7.2"
