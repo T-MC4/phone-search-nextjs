@@ -7,7 +7,8 @@
         "build": "NODE_ENV=production AWS_LAMBDA_FUNCTION_NAME=true NODE_OPTIONS=--trace-warnings next build",
         "start": "next start",
         "lint": "next lint",
-        "search": "node -r dotenv/config utils/metaphor.js"
+        "search": "node -r dotenv/config utils/metaphor.js",
+        "install-puppeteer": "npm install puppeteer --unsafe-perm=true --allow-root"
     },
     "dependencies": {
         "cheerio": "1.0.0-rc.12",
