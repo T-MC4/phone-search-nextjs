@@ -68,13 +68,20 @@ export async function findPhoneNumbersAndEmails(html) {
 
     let phoneNumbers = [];
 
+//     for (const number of searchPhoneNumbersInText(text, 'US')) {
+//         console.log('Phone Number', number);
+//         await new Promise((resolve) => {
+//             setTimeout(resolve, 0);
+//             phoneNumbers.push(number.number.number);
+//         });
+//     }
+//     console.log('Finished');
+    
     for (const number of searchPhoneNumbersInText(text, 'US')) {
         console.log('Phone Number', number);
-        await new Promise((resolve) => {
-            setTimeout(resolve, 0);
-            phoneNumbers.push(number.number.number);
-        });
-    }
+        phoneNumbers.push(number.number.number);
+       }
+      
     console.log('Finished');
 
     let commonDomains = [
