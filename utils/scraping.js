@@ -4,6 +4,8 @@ const { searchPhoneNumbersInText } = require('libphonenumber-js');
 // import * as puppeteer from 'puppeteer';
 // import chromium from 'chrome-aws-lambda';
 
+process.setMaxListeners(15);
+
 export async function browseWebPage(url) {
     let puppeteer;
     let options;
@@ -32,9 +34,8 @@ export async function browseWebPage(url) {
         options = { args: ['--no-sandbox'] };
     }
 
-    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'], headless: 'new' });
     // let browser = await puppeteer.launch(options);
-//     const browser = await puppeteer.launch({ headless: 'new' });
 
     const page = await browser.newPage();
     let content;
