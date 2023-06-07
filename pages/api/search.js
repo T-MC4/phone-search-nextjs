@@ -91,8 +91,8 @@ export default async function handler(req, res) {
   const browser = await puppeteer.launch(puppeteerOptions);
   const page = await browser.newPage();
   
-  const debouncedGetURLs = debounce(getURLs, 500);
-  const arrayOfResults = await debouncedGetURLs(query, number);
+//   const debouncedGetURLs = debounce(getURLs, 500);
+//   const arrayOfResults = await debouncedGetURLs(query, number);
   
     const arrayOfPromptResults = [
         {
