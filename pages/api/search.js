@@ -91,6 +91,9 @@ export default async function handler(req, res) {
   const browser = await puppeteer.launch(puppeteerOptions);
   const page = await browser.newPage();
   
+  const debouncedGetURLs = debounce(getURLs, 500);
+  const arrayOfResults = await debouncedGetURLs(query, number);
+  
     const arrayOfPromptResults = [
         {
         urls: [
@@ -115,9 +118,6 @@ export default async function handler(req, res) {
         'Another option for purchasing feel frees locally can be found at this store:',
         },
         ];
-  
-  debouncedGetURLs = debounce(getURLs, 500);
-  const arrayOfPromptResults = await debouncedGetURLs(query, number);
 
 //   const arrayOfPromptResults = await getURLs(query, number);
   const dataPromises = arrayOfPromptResults
