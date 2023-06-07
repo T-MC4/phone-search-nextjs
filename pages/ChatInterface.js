@@ -13,48 +13,91 @@ export default function ChatInterface() {
     };
 
     // Function to send a query to the server and handle the response
+//     const sendQuery = () => {
+//         setLoading(true);
+
+//         const queryInput = document.getElementById('query-input');
+//         const query = queryInput.value.trim();
+
+//         const numberInput = document.getElementById('number-input');
+//         const number = numberInput.value;
+
+//         if (!query) return;
+
+//         // Make a request to the API endpoint
+//         fetch(
+//             `/api/search?query=${encodeURIComponent(
+//                 query
+//             )}&number=${encodeURIComponent(number)}`
+//         )
+//             .then((response) => response.json())
+//             .then((data) => {
+//                 // Process the response data and display phone numbers
+//                 if (data.error) {
+//                     addMessage(`Error: ${data.error}`);
+//                 } else if (data.length === 0) {
+//                     addMessage('No phone numbers found.');
+//                 } else {
+//                     // const phoneNumbers = data.map((result) => result).flat();
+//                     // const formattedPhoneNumbers = phoneNumbers.join(', ');
+//                     addMessage(JSON.stringify(data, null, 2));
+//                 }
+//             })
+//             .catch((error) => {
+//                 console.error('Error:', error);
+//                 addMessage('An error occurred. Please try again.');
+//             })
+//             .finally(() => {
+//                 setLoading(false);
+//             });
+
+//         // Clear the input field
+//         queryInput.value = '';
+//         numberInput.value = '';
+//     };
+
     const sendQuery = () => {
-        setLoading(true);
+    setLoading(true);
 
-        const queryInput = document.getElementById('query-input');
-        const query = queryInput.value.trim();
+    const queryInput = document.getElementById('query-input');
+    const query = queryInput.value.trim();
 
-        const numberInput = document.getElementById('number-input');
-        const number = numberInput.value;
+    const numberInput = document.getElementById('number-input');
+    const number = numberInput.value;
 
-        if (!query) return;
+    if (!query) return;
 
-        // Make a request to the API endpoint
-        fetch(
-            `/api/search?query=${encodeURIComponent(
-                query
-            )}&number=${encodeURIComponent(number)}`
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                // Process the response data and display phone numbers
-                if (data.error) {
-                    addMessage(`Error: ${data.error}`);
-                } else if (data.length === 0) {
-                    addMessage('No phone numbers found.');
-                } else {
-                    // const phoneNumbers = data.map((result) => result).flat();
-                    // const formattedPhoneNumbers = phoneNumbers.join(', ');
-                    addMessage(JSON.stringify(data, null, 2));
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                addMessage('An error occurred. Please try again.');
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+    // Make a request to the API endpoint
+    fetch(
+        `/api/search?query=${encodeURIComponent(query)}&number=${encodeURIComponent(
+            number
+        )}`
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            // Process the response data and display phone numbers
+            if (data.error) {
+                addMessage(`Error: ${data.error}`);
+            } else if (data.length === 0) {
+                addMessage('No phone numbers found.');
+            } else {
+                // const phoneNumbers = data.map((result) => result).flat();
+                // const formattedPhoneNumbers = phoneNumbers.join(', ');
+                addMessage(JSON.stringify(data, null, 2));
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            addMessage(`An error occurred: ${error}`);
+        })
+        .finally(() => {
+            setLoading(false);
+        });
 
-        // Clear the input field
-        queryInput.value = '';
-        numberInput.value = '';
-    };
+    // Clear the input field
+    queryInput.value = '';
+    numberInput.value = '';
+};
 
     return (
         <div>
