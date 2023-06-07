@@ -64,6 +64,15 @@ import {
   removeDuplicates,
 } from '../../utils/scraping.js';
 
+const debounce = (fn, delay) => {
+  let timer;
+  return function() {
+    const context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(context, args), delay);
+  };
+};
+
 export default async function handler(req, res) {
   const start = performance.now();
 
@@ -82,6 +91,8 @@ export default async function handler(req, res) {
   const browser = await puppeteer.launch(puppeteerOptions);
   const page = await browser.newPage();
 
+  debouncedGetURLs = debounce(getURLs, 500);
+  const arrayOfPromptResults = await debouncedGetURLs(query, number);
 
     const arrayOfPromptResults = [
         {
