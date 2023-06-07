@@ -78,7 +78,7 @@ export async function findPhoneNumbersAndEmails(html) {
 //     console.log('Finished');
     
     for (const number of searchPhoneNumbersInText(text, 'US')) {
-        console.log('Phone Number', number);
+//         console.log('Phone Number', number);
         phoneNumbers.push(number.number.number);
        }
       
