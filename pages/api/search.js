@@ -1,4 +1,5 @@
 import { getURLs } from '../../utils/metaphor.js';
+import { reverseLookupOffEmails } from '../../utils/reverse-lookup.js';
 import {
     browseWebPage,
     findPhoneNumbersAndEmails,
@@ -28,11 +29,16 @@ export default async function handler(req, res) {
                         await findPhoneNumbersAndEmails(text);
                     console.log('Phone Numbers: ', phoneNumbers);
 
+                    const uniqueEmails = removeDuplicates(emails);
+                    // const reverseLookupNumbers =
+                    //     reverseLookupOffEmails(uniqueEmails);
+
                     return {
                         metaphorPrompt: metaphorSearchPrompt,
                         url: url,
                         phoneNumbers: removeDuplicates(phoneNumbers),
-                        emails: removeDuplicates(emails),
+                        emails: uniqueEmails,
+                        // reverseLookupNumbers: reverseLookupNumbers,
                     };
                 })
             );
