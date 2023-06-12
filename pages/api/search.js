@@ -1,21 +1,34 @@
+import puppeteer from 'puppeteer';
 import { getURLs } from '../../utils/metaphor.js';
 import { reverseLookupOffEmails } from '../../utils/reverse-lookup.js';
 import {
     browseWebPage,
     findPhoneNumbersAndEmails,
-    removeDuplicates,
+    //  removeDuplicates,
 } from '../../utils/scraping.js';
+
+const debounce = (fn, delay) => {
+    let timer;
+    return function () {
+        const context = this,
+            args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(() => fn.apply(context, args), delay);
+    };
+};
 
 export default async function handler(req, res) {
     const start = performance.now();
-
-    const query = req.query.query;
+    const { query, number } = req.query;
     console.log(query);
-    const number = req.query.number;
     console.log(number);
 
     if (!query) {
         return res.status(400).json({ error: 'Missing query parameter' });
+    }
+    function removeDuplicates(phoneNumbers) {
+        const uniquePhoneNumbers = [...new Set(phoneNumbers)];
+        return uniquePhoneNumbers;
     }
 
     const arrayOfPromptResults = await getURLs(query, number);
@@ -29,7 +42,6 @@ export default async function handler(req, res) {
                         await findPhoneNumbersAndEmails(text);
                     console.log('Phone Numbers: ', phoneNumbers);
 
-                    const uniqueEmails = removeDuplicates(emails);
                     // const reverseLookupNumbers =
                     //     reverseLookupOffEmails(uniqueEmails);
 
@@ -37,7 +49,7 @@ export default async function handler(req, res) {
                         metaphorPrompt: metaphorSearchPrompt,
                         url: url,
                         phoneNumbers: removeDuplicates(phoneNumbers),
-                        emails: uniqueEmails,
+                        emails: removeDuplicates(emails),
                         // reverseLookupNumbers: reverseLookupNumbers,
                     };
                 })
