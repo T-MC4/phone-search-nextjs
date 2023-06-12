@@ -1,21 +1,20 @@
-import puppeteer from 'puppeteer';
 import { getURLs } from '../../utils/metaphor.js';
-import { reverseLookupOffEmails } from '../../utils/reverse-lookup.js';
+// import { reverseLookupOffEmails } from '../../utils/reverse-lookup.js';
 import {
     browseWebPage,
     findPhoneNumbersAndEmails,
-    //  removeDuplicates,
 } from '../../utils/scraping.js';
 
-const debounce = (fn, delay) => {
-    let timer;
-    return function () {
-        const context = this,
-            args = arguments;
-        clearTimeout(timer);
-        timer = setTimeout(() => fn.apply(context, args), delay);
-    };
-};
+// FUNCTION FOR TESTING
+// const debounce = (fn, delay) => {
+//     let timer;
+//     return function () {
+//         const context = this,
+//             args = arguments;
+//         clearTimeout(timer);
+//         timer = setTimeout(() => fn.apply(context, args), delay);
+//     };
+// };
 
 export default async function handler(req, res) {
     const start = performance.now();
