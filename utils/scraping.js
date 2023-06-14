@@ -3,7 +3,10 @@ const { searchPhoneNumbersInText } = require('libphonenumber-js');
 //` import puppeteer from 'puppeteer';
 // import * as puppeteer from 'puppeteer';
 // import chromium from 'chrome-aws-lambda';
-//const puppeteer = require('puppeteer'); 
+const puppeteer = require('puppeteer'); 
+
+// let puppeteer; 
+let options;
 
 process.setMaxListeners(15);
 
@@ -11,7 +14,7 @@ async function browseWebPage(url) {
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
         // running on the Vercel platform.
         chrome = require('chrome-aws-lambda');
-        puppeteer = require('puppeteer-core');
+        // puppeteer = require('puppeteer-core');
         options = {
             args: [
                 ...chrome.args,
@@ -28,7 +31,7 @@ async function browseWebPage(url) {
         };
     } else {
         // running locally.
-        puppeteer = require('puppeteer');
+        // puppeteer = require('puppeteer');
         options = { args: ['--no-sandbox'] };
     }
     
